@@ -1,30 +1,27 @@
-import org.junit.jupiter.api.Test;
+public class RewardValue {
+    private double cashValue;
+    private double milesValue;
+    private static final double MILES_TO_CASH_CONVERSION_RATE = 0.0035;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class RewardValueTests {
-
-    @Test
-    void create_with_cash_value() {
-        double cashValue = 100;
-        var rewardValue = new RewardValue(cashValue);
-        assertEquals(cashValue, rewardValue.getCashValue());
+    // Constructor that accepts cash value
+    public RewardValue(double cashValue) {
+        this.cashValue = cashValue;
+        this.milesValue = cashValue / MILES_TO_CASH_CONVERSION_RATE;
     }
 
-    @Test
-    void create_with_miles_value() {
-        int milesValue = 10000;
-        var rewardValue = new RewardValue(milesValue);
-        assertEquals(milesValue, rewardValue.getMilesValue());
+    // Constructor that accepts miles value
+    public RewardValue(int milesValue) {
+        this.milesValue = milesValue;
+        this.cashValue = milesValue * MILES_TO_CASH_CONVERSION_RATE;
     }
 
-    @Test
-    void convert_from_cash_to_miles() {
-        assert false;
+    // Method to get cash value
+    public double getCashValue() {
+        return cashValue;
     }
 
-    @Test
-    void convert_from_miles_to_cash() {
-        assert false;
+    // Method to get miles value
+    public double getMilesValue() {
+        return milesValue;
     }
 }
